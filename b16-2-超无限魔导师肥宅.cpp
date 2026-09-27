@@ -2,16 +2,16 @@
 #include <algorithm>
 using namespace std;
 
-int cost[1010];
-int value[1010];
-int f[1010][2010]; // f[i][j]: 前i个物品，花费j元时的最大美味值
+int cost[55];
+int value[55];
+int f[55][1010]; // f[i][j]: 前i个物品，花费j元时的最大美味值
 int n, V;
 
 int main() {
     cin >> n >> V;
 
     for (int i = 1; i <= n; i++) {
-        cin >> value[i] >> cost[i];
+        cin >> cost[i] >> value[i];
     }
 
     f[0][0] = 0; // 初始化状态，花费0元时的最大美味值为0
@@ -28,12 +28,8 @@ int main() {
         }
     }
 
-    int ans = 0;
-    for (int i = 1; i <= V; i++) {
-        ans = max(ans, f[n][i]);
-    }
-    cout << ans;
-
+    for (int i = 1; i <= V; i++) cout << f[n][i] << " ";
+    
     return 0;
 }
 
